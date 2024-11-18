@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Management System</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.form-container, .task-list-container {
+    margin-top: 30px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #e2e2e2;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.task-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-info p {
+    margin: 0;
+}
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Team Management System</h1>
+        <div class="form-container">
+            <h2>Create Task</h2>
+            <form id="taskForm">
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="taskName" required>
+
+                <label for="assignedTo">Assign to:</label>
+                <input type="text" id="assignedTo" required>
+
+                <label for="dueDate">Due Date:</label>
+                <input type="date" id="dueDate" required>
+
+                <button type="submit">Create Task</button>
+            </form>
+        </div>
+        <div class="task-list-container">
+            <h2>Task List</h2>
+            <ul id="taskList"></ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form values
+    const taskName = document.getElementById('taskName').value;
+    const assignedTo = document.getElementById('assignedTo').value;
+    const dueDate = document.getElementById('dueDate').value;
+
+    // Create a new list item
+    const li = document.createElement('li');
+
+    // Task information
+    const taskInfo = document.createElement('div');
+    taskInfo.className = 'task-info';
+
+    // Task name and assigned to
+    const taskText = document.createElement('p');
+    taskText.textContent = `${taskName} - Assigned to: ${assignedTo}`;
+
+    // Due date
+    const taskDate = document.createElement('p');
+    taskDate.textContent = `Due: ${dueDate}`;
+
+    taskInfo.appendChild(taskText);
+    taskInfo.appendChild(taskDate);
+
+    // Append task info to list item
+    li.appendChild(taskInfo);
+
+    // Append list item to task list
+    document.getElementById('taskList').appendChild(li);
+
+    // Clear form fields
+    document.getElementById('taskForm').reset();
+});
+
+    </script>
+</body>
+</html>

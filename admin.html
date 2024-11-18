@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Online Food Ordering</title>
+    <style>
+        /* Basic styles for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px 10px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #444;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        .button {
+            padding: 10px 15px;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#order-management">Order Management</a>
+        <a href="#menu-management">Menu Management</a>
+        <a href="#category-management">Category Management</a>
+        <a href="#user-management">User Management</a>
+      
+    </div>
+
+    <div class="main-content">
+        
+        <!--Dashboard Overview-->
+        <div class="section" id="dashboard">
+            <h2>Dashboard Overview</h2>
+            <p>Total Orders: 150</p>
+            <p>Revenue: $10,000</p>
+            <p>Pending Orders: 5</p>
+        </div>
+
+        <!--Order Management--> 
+        <div class="section" id="order-management">
+            <h2>Order Management</h2>
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>12345</td>
+                    <td>John Doe</td>
+                    <td>$50</td>
+                    <td>Pending</td>
+                    <td>
+                        <button class="button" onclick="openUpdateModal(12345)">Update</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>12346</td>
+                    <td>Jane Smith</td>
+                    <td>$75</td>
+                    <td>Completed</td>
+                    <td>
+                        <button class="button" onclick="openUpdateModal(12346)">Update</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--Menu Management-->
+        <div class="section" id="menu-management">
+            <h2>Menu Management</h2>
+            <button class="button" onclick="addNewItem()">Add New Item</button>
+            <table>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Biryani</td>
+                    <td>Indian</td>
+                    <td>$10</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Burger</td>
+                    <td>Fast Food</td>
+                    <td>$5</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--Category Management-->
+        <div class="section" id="category-management">
+            <h2>Category Management</h2>
+            <button class="button" onclick="addNewCategory()">Add New Category</button>
+            <table>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Indian</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fast Food</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--User Management-->
+        <div class="section" id="user-management">
+            <h2>User Management</h2>
+            <table>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Orders</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>jane.doe@example.com</td>
+                    <td>5</td>
+                    <td>
+                        <button class="button">View</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>John Smith</td>
+                    <td>john.smith@example.com</td>
+                    <td>3</td>
+                    <td>
+                        <button class="button">View</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+            // Function to add a new item to the menu
+            function addNewItem() {
+                const table = document.querySelector('#menu-management table');
+                const newRow = table.insertRow(-1);
+                newRow.innerHTML = `
+                    <td contenteditable="true">New Item</td>
+                    <td contenteditable="true">Category</td>
+                    <td contenteditable="true">$0</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>`;
+            }
+
+            // Function to add a new category to the category table
+            function addNewCategory() {
+                const table = document.querySelector('#category-management table');
+                const newRow = table.insertRow(-1);
+                newRow.innerHTML = `
+                    <td contenteditable="true">New Category</td>
+                    <td>
+                        <button class="button" onclick="editRow(this)">Edit</button>
+                        <button class="button" onclick="deleteRow(this)">Delete</button>
+                    </td>`;
+            }
+
+            // Function to edit a row
+            function editRow(button) {
+                const row = button.parentNode.parentNode;
+                for (let i = 0; i < row.cells.length - 1; i++) {
+                    row.cells[i].contentEditable = "true";
+                }
+                button.textContent = "Save";
+                button.onclick = function() {
+                    saveRow(button);
+                };
+            }
+
+            // Function to save a row
+            function saveRow(button) {
+                const row = button.parentNode.parentNode;
+                for (let i = 0; i < row.cells.length - 1; i++) {
+                    row.cells[i].contentEditable = "false";
+                }
+                button.textContent = "Edit";
+                button.onclick = function() {
+                    editRow(button);
+                };
+            }
+
+            // Function to delete a row
+            function deleteRow(button) {
+                const row = button.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+
+            // Open the update modal and set order ID (Add this function if needed)
+            function openUpdateModal(orderId) {
+                // Logic to open modal (if applicable)
+                alert("Open update modal for Order ID: " + orderId);
+            }
+        </script>
+    </div>
+</body>
+</html>

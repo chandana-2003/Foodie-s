@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billing</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            background-image: url('https://cdn.buttercms.com/AwaLK8jQRr2NJC2F4qKa');
+            background-size: cover;
+        }
+
+        .billing-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .billing-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .billing-item:last-child {
+            border-bottom: none;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-weight: bold;
+            border-top: 2px solid #333;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-methods label {
+            margin-right: 10px;
+        }
+
+        .payment-methods button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #74b1f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-methods button:hover {
+            background-color: #0c359e;
+        }
+    </style>
+</head>
+<body>
+    <div class="billing-container">
+        <h1>Billing Summary</h1>
+        <div id="billing-items"></div>
+        <div class="total">
+            <span>Total Amount:</span>
+            <span id="ta">$0.00</span>
+        </div>
+        
+        <div class="payment-methods">
+            <h2>Select Payment Method</h2>
+            <input type="radio" id="cod" name="payment" value="cod">
+            <label for="cod">Cash on Delivery</label><br>
+            <input type="radio" id="phonepe" name="payment" value="phonepe">
+            <label for="phonepe">PhonePe</label><br>
+            <input type="radio" id="googlepay" name="payment" value="googlepay">
+            <label for="googlepay">Google Pay</label><br>
+
+            <button onclick="processPayment()">Pay Bill</button>
+        </div>
+    </div>
+    <script>
+        // Load cart items from local storage
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const billingItemsContainer = document.getElementById("billing-items");
+         
+        let totalAmount = 0;
+    
+        // Check if there are any items in the cart
+        if (cartItems.length > 0) {
+            cartItems.forEach(item => {
+                // Split item value to get the name and price
+                const [itemName, itemPrice] = item.split(": ");
+                const price = parseFloat(itemPrice.replace("$", "")); // Extract the price as a number
+                
+                // Create item element
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("billing-item");
+                itemElement.innerHTML = `<span>${itemName}</span><span>$${price.toFixed(2)}</span>`;
+    
+                // Add item element to the billing container
+                billingItemsContainer.appendChild(itemElement);
+    
+                // Update total amount
+                totalAmount += price;
+               
+            });
+    
+            // Display total amount
+            document.getElementById("ta").textContent = `$${totalAmount.toFixed(2)}`;
+        } else {
+            billingItemsContainer.innerHTML = "<p>No items in the cart.</p>";
+        }
+
+        // Function to handle payment process
+        function processPayment() {
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            if (!paymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            switch (paymentMethod.value) {
+                case "cod":
+                    window.location.href = "order-placed.html"; // Redirect to Order Placed page
+                    break;
+                case "phonepe":
+                    window.location.href = "https://www.phonepe.com/"; // Redirect to PhonePe site
+                    break;
+                case "googlepay":
+                    window.location.href = "https://pay.google.com/"; // Redirect to Google Pay site
+                    break;
+                default:
+                    alert("Please select a valid payment method.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Food Ordering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+    function addToCart() {
+        const selectedItems = [];
+        const checkboxes = document.querySelectorAll('input[name="menu-item"]:checked');
+        
+        checkboxes.forEach((checkbox) => {
+            selectedItems.push(checkbox.value);
+        });
+
+        localStorage.setItem("cartItems", JSON.stringify(selectedItems));
+        window.location.href = "cart.html";
+    }
+
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-image: url('https://img.freepik.com/premium-photo/selection-food-including-vegetables-spices_1307030-3787.jpg?w=1060');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        header .btn {
+            padding: 1rem 2rem;
+            background-color: #ff4d4d;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        header .btn:hover {
+            background-color: #e63946;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        #features {
+            background-image: url('https://wallpapers.com/images/hd/table-background-rs2t267wak9dk71x.jpg');
+        }
+
+        #features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: rgb(255, 255, 255);
+        }
+
+        .feature-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .feature {
+            width: 25%;
+            color: white;
+        }
+
+        .feature img {
+            width: 140px;
+            margin-bottom: 1rem;
+            border-radius: 20px;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: white;
+        }
+
+        #menu {
+            background-image: url('https://media.istockphoto.com/id/1190181437/photo/dark-abstract-background-with-wooden-table.jpg?s=612x612&w=0&k=20&c=O6XSff73Vfd555BEMpnf3FpPmei7Pj4-nnMT2b7JLoE=');
+            color: white;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #menu h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 20px;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .menu-item {
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            width: 160px;
+            margin-bottom: 1rem;
+            border-radius: 10px 10px;
+
+        }
+        .menu-item img:hover {
+            width: 150px;
+            margin-bottom: 1rem;
+            
+            
+            
+        }
+
+        .menu-item h3 {
+            margin-bottom: 0.5rem;
+        }
+      
+        .cart{
+            transform: translateX(500%);
+        }
+        .cart .btn{
+            width: 130px;
+            height: 50px;
+            font-size: larger;
+            font-weight: bolder;
+            border-radius: 15px;
+        }
+        .cart .btn:hover{
+            width: 130px;
+            height: 50px;
+            font-size: larger;
+            font-weight: bolder;
+            border-radius: 15px;
+             box-shadow: 10px 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Delicious Food, Delivered to You</h1>
+            <p>Your favorite meals delivered fast at your door.</p>
+            <a href="#menu" class="btn">Order Now</a>
+        </div>
+    </header>
+
+    <section id="features">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <img src="fast-delivery.webp" alt="Fast Delivery">
+                    <h3>Fast Delivery</h3>
+                    <p>Get your food delivered quickly.</p>
+                </div>
+                <div class="feature">
+                    <img src="food.jpeg" alt="Fresh Food">
+                    <h3>Fresh Ingredients</h3>
+                    <p>Fresh, delicious meals with every order.</p>
+                </div>
+                <div class="feature">
+                    <img src="24_7.jpeg" alt="24/7 Service">
+                    <h3>24/7 Service</h3>
+                    <p>Order anytime, day or night.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="biryani-1.jpeg" alt="Biryani">
+                    <h3>Biryani</h3>
+                    <p>$10.99</p>
+                    <input type="checkbox" name="menu-item" value="Biryani: $10.99">
+                </div>
+                <div class="menu-item">
+                    <img src="burger.jpg" alt="Burger">
+                    <h3>Burger</h3>
+                    <p>$8.99</p>
+                    <input type="checkbox" name="menu-item" value="Burger: $8.99">
+                </div>
+                <div class="menu-item">
+                    <img src="pizza.jpg" alt="Pizza">
+                    <h3>Pizza</h3>
+                    <p>$12.99</p>
+                    <input type="checkbox" name="menu-item" value="Pizza: $12.99">
+                </div>
+                <div class="menu-item">
+                    <img src="paratha.jpg" alt="Paratha">
+                    <h3>Paratha</h3>
+                    <p>$11.99</p>
+                    <input type="checkbox" name="menu-item" value="Paratha: $11.99">
+                </div>
+                <div class="menu-item">
+                    <img src="cake-1.jpeg" alt="Cake">
+                    <h3>Cake</h3>
+                    <p>$15.99</p>
+                    <input type="checkbox" name="menu-item" value="Cake: $15.99">
+                </div>
+                <div class="menu-item">
+                    <img src="sandwich.jpeg" alt="Sandwich">
+                    <h3>Sandwich</h3>
+                    <p>$19.99</p>
+                    <input type="checkbox" name="menu-item" value="Sandwich: $19.99">
+                </div>
+                <div class="menu-item">
+                    <img src="ice cream.jpg" alt="Ice-Cream">
+                    <h3>Ice-Cream</h3>
+                    <p>$13.99</p>
+                    <input type="checkbox" name="menu-item" value="Ice-Cream: $13.99">
+                </div>
+                <div class="menu-item">
+                   <img src="fries.jpeg" alt="French-Fries">
+                   <h3>French-Fries</h3>
+                    <p>$22.99</p>
+                    <input type="checkbox" name="menu-item" value="French-Fries: $22.99">
+                </div>
+                <div class="menu-item">
+                    <img src="waffles.jpeg" alt="Waffles">
+                    <h3>Waffles</h3>
+                    <p>$25.99</p>
+                    <input type="checkbox" name="menu-item" value="Waffles: $25.99">
+                </div>
+                <div class="menu-item">
+                        <img src="fried rice.jpeg" alt="Fried-Rice" width="150" height="140">
+                        <h3>Fried-Rice</h3>
+                        <p>$17.99   </p>
+                        <input type="checkbox" name="menu-item" value="Fried-Rice: $17.99">
+                </div>
+                <div class="menu-item">
+                    <img src="manchurian.jpeg" alt="Manchurian">
+                    <h3>Manchurian</h3>
+                    <p>$30.99</p>
+                    <input type="checkbox" name="menu-item" value="Manchurian: $30.99">
+                </div>
+                <div class="menu-item">
+                    <img src="pasta.JPG" alt="Pasta">
+                    <h3>Pasta</h3>
+                    <p>$31.99</p>
+                    <input type="checkbox" name="menu-item" value="Pasta: $31.99">
+                </div>
+                <div class="menu-item">
+                    <img src="popcorn.jpeg" alt="Pop-Corn">
+                    <h3>Pop-Corn</h3>
+                    <p>$20.99</p>
+                    <input type="checkbox" name="menu-item" value="Pop-Corn: $25.99">
+                </div>
+                <div class="menu-item">
+                    <img src="momos.jpg" alt="Momos">
+                    <h3>Momos</h3>
+                    <p>$26.99</p>
+                    <input type="checkbox" name="menu-item" value="Momos: $26.99">
+                </div>
+                <div class="menu-item">
+                    <img src="dosa.jpeg" alt="Waffles">
+                    <h3>Dosa</h3>
+                    <p>$15.99</p>
+                    <input type="checkbox" name="menu-item" value="Dosa: $15.99">
+                </div>
+                    
+                     
+                
+
+                <div class="cart">
+                <button onclick="addToCart()" class="btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Online Food Ordering System. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

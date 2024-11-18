@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Foodie's Paradise</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(0, 0, 0, 0.784);
+    padding: 20px;
+    position:fixed;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Search Bar Styles */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: black;
+    color: #ffd700; 
+}
+
+/* Welcome Section */
+.welcome-section {
+    height: 100vh;
+    background: url('https://img.freepik.com/premium-photo/black-stone-food-background-cooking-ingredients-top-view-free-space-your-text_187166-14219.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-content {
+    text-align: center;
+    color: white;
+}
+
+.welcome-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.welcome-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    position:fixed;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Foodie's Favorite</div>
+            <ul class="nav-links">
+                <li><a href="loginpage.html">Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="adminlogin.html">Admin</a></li>    
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search for meals..." class="search-bar">
+                <button class="search-btn">Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <h1>Welcome to Foodie's Favorite</h1>
+            <p>We bring your favorite dishes right to your doorstep with just a few clicks. Whether you're craving a quick snack, a family dinner, or something special, our wide selection of cuisines has it all!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Foodie's Favorite | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

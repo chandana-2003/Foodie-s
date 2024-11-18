@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Foodie's Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+            body {
+    background-color: #f8f8f8;
+    color: #333;
+    position: relative;
+}
+header {
+    background-color: #100e0e;
+    padding: 10px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+    transform: translate(-35%,35%);
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Search Bar Styles */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background-color: #ff6347;
+    color: white;
+}
+
+.contact-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg72UcyELV4fU_y7v5BU4OBtXyX291q-6QcA&s');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contact-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    height: 500px;
+    transform: translate(-70%,-10%);
+}
+
+.contact-container h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.contact-container p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #555;
+    display: flex;
+}
+/* Search Bar Styles */
+
+form {
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    resize: none;
+}
+
+textarea {
+    height: 100px;
+}
+
+.submit-btn {
+    padding: 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #e55342;
+}
+
+.form-message {
+    color: red;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+footer{
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
+</head>
+<body>
+    <script>
+        // Wait for the DOM to fully load before executing
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevents form submission
+    
+                // Get form fields
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const formMessage = document.getElementById('form-message');
+    
+                // Simple validation
+                if (name === '' || email === '' || message === '') {
+                    formMessage.textContent = 'Please fill in all fields.';
+                    formMessage.style.color = 'red';
+                } else if (!validateEmail(email)) {
+                    formMessage.textContent = 'Please enter a valid email address.';
+                    formMessage.style.color = 'white';
+                } else {
+                    // Show success message in form message
+                    formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                    formMessage.style.color = 'green';
+    
+                    // Display an alert box to notify the user of successful submission
+                    alert('Message sent successfully!');
+    
+                    // You can add AJAX here to submit form data to a server or perform other actions
+                }
+            });
+    
+            // Email validation function
+            function validateEmail(email) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+        });
+    </script>
+    
+    
+    <header>
+        <nav>
+            <div class="logo">Foodie's Favorite</div>
+            <ul class="nav-links">
+                <li><a href="welcome.html">Home</a></li>
+                <li><a href="homepage.html">Order</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <div class="search-container">
+                    <input type="text" placeholder="Search for meals..." class="search-bar">
+                    <button class="search-btn">Search</button>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Please fill out the form below to get in touch.</p>
+            <form id="contactForm" >
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Enter your message"></textarea>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <p id="form-message" class="form-message"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Foodie's Favorite | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
